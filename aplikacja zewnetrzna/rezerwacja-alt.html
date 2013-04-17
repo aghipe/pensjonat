@@ -1,0 +1,224 @@
+<html>
+<head>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<title>Strona pensjonatu - Rezerwacja - nowy klient</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name ="description" content="Pensjonat - zarezerwuj pok�j">
+<meta name="keywords" content="pokoj, pensjonat, rezerwuj">
+<meta http-equiv="content-language" content="pl">
+<link href="css.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+<!-- Ukrycie przed przeglądarkami nieobsługującymi JavaScriptu
+function przetwarzaj_dane (){
+  var brakuje_danych = false;
+  var formularz = document.forms[0];
+  var napis = "";
+  if(formularz.imie.value == ""){
+    napis += "-nie wypełniono pola imię\n"  
+    brakuje_danych = true;
+  }
+  if(formularz.nazwisko.value == ""){
+    napis += "-nie wypełniono pola nazwisko\n"  
+    brakuje_danych = true;
+  }
+  if(formularz.ulica.value == ""){
+    napis += "-nie wypełniono pola ulica\n"
+    brakuje_danych = true;
+  }
+  if(formularz.mail.value == ""){
+    napis += "-nie wypełniono pola e-mail\n"
+    brakuje_danych = true;
+  }
+  if(formularz.tel.value == ""){
+    napis += "-nie wypełniono pola telefon\n"
+    brakuje_danych = true;
+  }
+  if(formularz.nrdomu.value == ""){
+    napis += "-nie wypełniono pola nr domu/numer mieszkania\n"
+    brakuje_danych = true;
+  }
+  if(formularz.kod.value == ""){
+    napis += "-nie wypełniono pola kod pocztowy\n"
+    brakuje_danych = true;
+  }
+  if(formularz.miasto.value == ""){
+    napis += "-nie wypełniono pola miejscowosc\n"
+    brakuje_danych = true;
+  }
+  if(formularz.from.value == ""){
+    napis += "-nie wprowadzono daty przyjazdu\n"
+    brakuje_danych = true;
+  }
+  if(formularz.to.value == ""){
+    napis += "-nie wprowadzono daty wyjazdu\n"
+    brakuje_danych = true;
+  }
+  if(formularz.jednos.value == "" && formularz.dwuos.value == "" 
+  && formularz.trzyos.value == "" && formularz.czteros.value == ""){
+    napis += "-nie wybrano żadnego pokoju\n"
+    brakuje_danych = true;
+  }
+  if(!brakuje_danych)
+    formularz.submit();
+  else
+    alert ("Formularz nie został wypełniony poprawnie:\n" + napis);
+    return false;
+}
+// Koniec kodu JavaScript -->
+</script>
+</head>
+<body topmargin=0>
+<center>
+<div id="container">
+<div id="header"><BR>
+<h1>Pensjonat</h1><BR><BR>
+</div>
+<div id="menu">
+<a href="home.html">powrót do strony głównej</a><BR>
+<a href="/link.html">link</a><BR>
+<a href="/link.html">link</a><BR>
+<a href="/link.html">link</a><BR>
+</div>
+<div id="menu2">
+Placeholder na adres
+</div>
+<div id="content">
+<form name = "formularz1" action="rezerwacja-alt.php" method="post">
+<br>
+<h2>
+<i>Rezerwacja - nowy klient<br>
+</i></font></h2>
+<br><br>
+<table>
+
+  <div style="clear:both">
+   
+
+<font style="font-size:14px">
+
+<b>Dane personalne</b></font>
+  <br>
+  </div>
+
+  <div id="form1">
+  <div id="form2">imię:</div>  
+  <div id="form3"><input type="text" name="imie">
+  </div></div> 
+  <div id="form1r"> 
+<div id="form2r">nazwisko:</div>  
+  <div id="form3"><input type="text" name="nazwisko">
+  </div></div>
+  
+  
+  <div  id="form1">    
+<div id="form2">ulica:</div>  
+  <div id="form3"><input type="text" name="ulica">
+  </div></div>
+  
+
+  
+  <div  id="form1r">    
+<div id="form2r">dom/mieszkanie:</div>  
+  <div id="form3"><input type="text" name="nrdomu">
+  </div></div>
+  
+  
+   <div  id="form1r">    
+<div id="form2r">miejscowość:</div>  
+  <div id="form3"><input type="text" name="miasto">
+  </div></div>
+  
+  <div  id="form1">    
+<div id="form2">kod pocztowy:</div>  
+  <div id="form3"><input type="text" name="kod">
+  </div></div>
+  
+   <div  id="form1r">    
+<div id="form2r">telefon:</div>  
+  <div id="form3"><input type="text" name="tel">
+  </div></div>
+  
+  <div  id="form1">    
+<div id="form2">e-mail:</div>  
+  <div id="form3"> <input type="text" name="mail">
+  </div>
+  </div>
+  
+  </div></div><div style="clear:both">
+<font style="font-size:14px"><b>Termin rezerwacji</b></font>
+  <br>
+  (wymagane jest wypełnienie wszystkich pól wg formatu DD-MM-RRRR)
+  </div>
+  
+  <div  id="form1r">    
+<div id="form2r">wyjazd:</div>  
+  <div id="form3"><input type="text" name="to">
+  </div></div>
+  
+  <div  id="form1">    
+<div id="form2">przyjazd:</div>  
+  <div id="form3"> <input type="text" name="from">
+  </div>
+  </div>
+  
+  </div></div><div style="clear:both">
+<font style="font-size:14px"><b>Ilość pokoi</b></font>
+  <br>
+  (należy wpisać liczbę w przynajmniej jednym polu)
+  </div>
+  
+  <div  id="form1r">    
+<div id="form2r">dwuosobowe:</div>  
+  <div id="form3"><input type="text" name="dwuos">
+  </div></div>
+  
+  <div  id="form1">    
+<div id="form2">jednoosobowe:</div>  
+  <div id="form3"> <input type="text" name="jednos">
+  </div>
+  </div>
+  
+    <div  id="form1r">    
+<div id="form2r">czteroosobowe:</div>  
+  <div id="form3"><input type="text" name="czteros">
+  </div></div>
+  
+  <div  id="form1">    
+<div id="form2">trzyosobowe:</div>  
+  <div id="form3"> <input type="text" name="trzyos">
+  </div>
+  </div>
+  
+  <td width="450">
+  </td>
+
+
+
+   
+<tr>
+  <td>
+  </td>
+  <td align="center">
+    <input type    = "submit"
+           name    = "wyslij" 
+           VALUE   = "   Wyślij!   "
+           onClick = "return przetwarzaj_dane()"
+    >
+  </td>
+</tr>
+</table>
+</form>
+</div>
+
+<div id="footer">Pensjonat, wszelkie prawa autorskie zastrzeżone.<BR>2013</div>
+
+
+
+</div>
+
+
+
+</div>
+</center>
+</body>
+</html>
