@@ -1,12 +1,14 @@
-<html>
+﻿<html>
 <head>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<title>Strona pensjonatu - Rezerwacja - nowy klient</title>
+<title>Strona pensjonatu </title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name ="description" content="Pensjonat - zarezerwuj pok�j">
 <meta name="keywords" content="pokoj, pensjonat, rezerwuj">
 <meta http-equiv="content-language" content="pl">
-<link href="css.css" rel="stylesheet" type="text/css">
+<link href="css.css" rel="stylesheet" type="text/css" title="default">
+<link rel="alternate stylesheet" type="text/css" href="css2.css" title="alternate">
+<meta http-equiv="Default-Style" content="default">
 <script type="text/javascript">
 <!-- Ukrycie przed przeglądarkami nieobsługującymi JavaScriptu
 function przetwarzaj_dane (){
@@ -66,32 +68,34 @@ function przetwarzaj_dane (){
 }
 // Koniec kodu JavaScript -->
 </script>
+
+
 </head>
+
 <body topmargin=0>
 <center>
 <div id="container">
 <div id="header"><BR>
 <h1>Pensjonat</h1><BR><BR>
-</div>
+</div><div id="container1">
 <div id="menu">
-<a href="home.html">powrót do strony głównej</a><BR>
-<a href="/link.html">link</a><BR>
-<a href="/link.html">link</a><BR>
-<a href="/link.html">link</a><BR>
+<a href="Home.html">Strona główna</a><BR>
+<a href="Rezerwacja.html">Rezerwacja</a><BR>
+<a href="Cennik.html">Cennik</a><BR>
 </div>
 <div id="menu2">
 Placeholder na adres
 </div>
 <div id="content">
-<form name = "formularz1" action="rezerwacja-alt.php" method="post">
+<form name = "formularz1" action="rezerwacja.php" method="post">
 <br>
 <h2>
-<i>Rezerwacja - nowy klient<br>
+<i>Rezerwacja<br>
 </i></font></h2>
 <br><br>
-<table>
 
-  <div style="clear:both">
+
+  <div style="clear:both; padding-bottom:5px;">
    
 
 <font style="font-size:14px">
@@ -142,12 +146,12 @@ Placeholder na adres
 <div id="form2">e-mail:</div>  
   <div id="form3"> <input type="text" name="mail">
   </div>
-  </div>
+
   
-  </div></div><div style="clear:both">
+  </div><div style="clear:both; padding-bottom:5px;padding-top:20px;">
 <font style="font-size:14px"><b>Termin rezerwacji</b></font>
   <br>
-  (wymagane jest wypełnienie wszystkich pól wg formatu DD-MM-RRRR)
+  (wymagane jest wypełnienie wszystkich pól wg formatu RRRR-MM-DD)
   </div>
   
   <div  id="form1r">    
@@ -159,9 +163,7 @@ Placeholder na adres
 <div id="form2">przyjazd:</div>  
   <div id="form3"> <input type="text" name="from">
   </div>
-  </div>
-  
-  </div></div><div style="clear:both">
+  </div><div style="clear:both; padding-bottom:5px;padding-top:20px;">
 <font style="font-size:14px"><b>Ilość pokoi</b></font>
   <br>
   (należy wpisać liczbę w przynajmniej jednym polu)
@@ -187,34 +189,20 @@ Placeholder na adres
 <div id="form2">trzyosobowe:</div>  
   <div id="form3"> <input type="text" name="trzyos">
   </div>
-  </div>
-  
-  <td width="450">
-  </td>
-
-
-
-   
-<tr>
-  <td>
-  </td>
-  <td align="center">
+  </div><BR><BR><BR>
+  <div STYLE="padding-top:30px;padding-left:30px; padding-right:0px; ">
+ <BR><BR>     <BR>
     <input type    = "submit"
            name    = "wyslij" 
            VALUE   = "   Wyślij!   "
            onClick = "return przetwarzaj_dane()"
     >
-  </td>
-</tr>
-</table>
-</form>
+ 
+</form><BR><BR>
+</div></div>
 </div>
 
 <div id="footer">Pensjonat, wszelkie prawa autorskie zastrzeżone.<BR>2013</div>
-
-
-
-</div>
 
 
 

@@ -28,11 +28,11 @@ CREATE TABLE `klienci` (
   `telefon` varchar(10) DEFAULT NULL,
   `e_mail` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`nr_klienta`)
-) ENGINE=InnoDB AUTO_INCREMENT=100012 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100022 DEFAULT CHARSET=utf8;
 
 /*Data for the table `klienci` */
 
-insert  into `klienci`(`imie`,`nazwisko`,`nr_klienta`,`adres`,`telefon`,`e_mail`) values ('Jan','Kowalski',100001,'Wiśniowa 34/15 23-456 Kraków','123456789','jkowal@email.com'),('Jacek','Kwiatkowski',100002,'Różana 33/44 67-890 Jarosław','111222333','kwiatek@email.com'),('Marek','Nowak',100003,'Długa 67 12-345 Łódź','098765432','marnow@email.com'),('Andrzej','Malinowski',100005,'Stroma 4/15 77-888 Gdańsk','543210987','malina@email.com');
+insert  into `klienci`(`imie`,`nazwisko`,`nr_klienta`,`adres`,`telefon`,`e_mail`) values ('Jan','Kowalski',100001,'Wiśniowa 34/15 23-456 Kraków','123456789','jkowal@email.com'),('Jacek','Kwiatkowski',100002,'Różana 33/44 67-890 Jarosław','111222333','kwiatek@email.com'),('Marek','Nowak',100003,'Długa 67 12-345 Łódź','098765432','marnow@email.com'),('Andrzej','Malinowski',100005,'Stroma 4/15 77-888 Gdańsk','543210987','malina@email.com'),('Janusz','Kozioł',100006,'Dębowa 31 76-543 Poznań','432678567','jankoz@email.com'),('Maciej','Wojciechowski',100007,'Szara 66/13 66-666 Szczecin','444555666','macwoj@email.com'),('Kamil','Głowacki',100008,'Prosta 1/12 33-444 Olsztyn','654654654','glowa@email.com'),('Łukasz','Baran',100014,'Polna 73 65-654 Lublin','738532678','lukasz01@emai.com'),('Bartosz','Kot',100019,'Szeroka 12 55-333 Poznań','632754865','kotek@email.com'),('Marek','Wysocki',100020,'Poniedziałkowy Dół 12/7 31-123 Kraków','555123456','mawys@mail.com.pl'),('Janusz','Wolski',100021,'Nowa 22 11-555 Łódź','444666999','jwolski@emai.com');
 
 /*Table structure for table `pokoje` */
 
@@ -58,17 +58,17 @@ CREATE TABLE `wynajecia` (
   `imie_klienta` varchar(50) DEFAULT NULL,
   `nazwisko_klienta` varchar(50) DEFAULT NULL,
   `nr_pokoju` varchar(3) DEFAULT NULL,
-  `pojemnosc` int(11) DEFAULT NULL,
+  `pojemnosc_pokoju` int(11) DEFAULT NULL,
   `data_przyjazdu` date DEFAULT NULL,
   `data_wyjazdu` date DEFAULT NULL,
   `stan` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`nr_rezerwacji`),
   KEY `nr klienta` (`nr_klienta`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=utf8;
 
 /*Data for the table `wynajecia` */
 
-insert  into `wynajecia`(`nr_rezerwacji`,`nr_klienta`,`imie_klienta`,`nazwisko_klienta`,`nr_pokoju`,`pojemnosc`,`data_przyjazdu`,`data_wyjazdu`,`stan`) values (1,123456,'Jan','Kowalski','1',1,'2013-06-15','2013-06-22','rezerwacja'),(2,467976,'Marcin','Nowak',NULL,1,'2013-07-23','2013-07-27','rezerwacja'),(27,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(28,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(29,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(30,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(31,100005,'Andrzej','Malinowski',NULL,2,'2013-08-11','2013-08-15','rezerwacja'),(32,100005,'Andrzej','Malinowski',NULL,2,'2013-08-11','2013-08-15','rezerwacja'),(33,100005,'Andrzej','Malinowski',NULL,3,'2013-08-11','2013-08-15','rezerwacja'),(34,100005,'Andrzej','Malinowski',NULL,3,'2013-08-11','2013-08-15','rezerwacja'),(35,100005,'Andrzej','Malinowski',NULL,4,'2013-08-11','2013-08-15','rezerwacja');
+insert  into `wynajecia`(`nr_rezerwacji`,`nr_klienta`,`imie_klienta`,`nazwisko_klienta`,`nr_pokoju`,`pojemnosc_pokoju`,`data_przyjazdu`,`data_wyjazdu`,`stan`) values (1,123456,'Jan','Kowalski','1',1,'2013-06-15','2013-06-22','rezerwacja'),(2,467976,'Marcin','Nowak',NULL,1,'2013-07-23','2013-07-27','rezerwacja'),(27,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(28,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(29,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(30,100005,'Andrzej','Malinowski',NULL,1,'2013-08-11','2013-08-15','rezerwacja'),(31,100005,'Andrzej','Malinowski',NULL,2,'2013-08-11','2013-08-15','rezerwacja'),(32,100005,'Andrzej','Malinowski',NULL,2,'2013-08-11','2013-08-15','rezerwacja'),(33,100005,'Andrzej','Malinowski',NULL,3,'2013-08-11','2013-08-15','rezerwacja'),(34,100005,'Andrzej','Malinowski',NULL,3,'2013-08-11','2013-08-15','rezerwacja'),(35,100005,'Andrzej','Malinowski',NULL,4,'2013-08-11','2013-08-15','rezerwacja'),(36,100006,'Janusz','Kozioł',NULL,1,'2013-08-01','2013-08-09','rezerwacja'),(37,100006,'Janusz','Kozioł',NULL,1,'2013-08-01','2013-08-09','rezerwacja'),(38,100006,'Janusz','Kozioł',NULL,2,'2013-08-01','2013-08-09','rezerwacja'),(39,100006,'Janusz','Kozioł',NULL,3,'2013-08-01','2013-08-09','rezerwacja'),(40,100007,'Maciej','Wojciechowski',NULL,1,'2013-07-11','2013-07-16','rezerwacja'),(41,100007,'Maciej','Wojciechowski',NULL,2,'2013-07-11','2013-07-16','rezerwacja'),(42,100007,'Maciej','Wojciechowski',NULL,2,'2013-07-11','2013-07-16','rezerwacja'),(43,100007,'Maciej','Wojciechowski',NULL,4,'2013-07-11','2013-07-16','rezerwacja'),(44,100008,'Kamil','Głowacki',NULL,1,'2013-09-14','2013-09-20','rezerwacja'),(45,100008,'Kamil','Głowacki',NULL,2,'2013-09-14','2013-09-20','rezerwacja'),(46,100008,'Kamil','Głowacki',NULL,2,'2013-09-14','2013-09-20','rezerwacja'),(47,100008,'Kamil','Głowacki',NULL,4,'2013-09-14','2013-09-20','rezerwacja'),(51,100019,'Bartosz','Kot',NULL,1,'2013-07-01','2013-07-03','rezerwacja'),(52,100019,'Bartosz','Kot',NULL,1,'2013-07-01','2013-07-03','rezerwacja'),(53,100019,'Bartosz','Kot',NULL,2,'2013-07-01','2013-07-03','rezerwacja'),(54,100019,'Bartosz','Kot',NULL,2,'2013-07-01','2013-07-03','rezerwacja'),(55,100019,'Bartosz','Kot',NULL,1,'2013-09-01','2013-09-03','rezerwacja'),(56,100019,'Bartosz','Kot',NULL,1,'2013-09-01','2013-09-03','rezerwacja'),(57,100019,'Bartosz','Kot',NULL,2,'2013-09-01','2013-09-03','rezerwacja'),(58,100019,'Bartosz','Kot',NULL,2,'2013-09-01','2013-09-03','rezerwacja'),(59,100020,'Marek','Wysocki',NULL,1,'2013-05-05','2013-05-08','rezerwacja'),(60,100021,'Janusz','Wolski',NULL,1,'2013-10-12','2013-10-17','rezerwacja'),(61,100021,'Janusz','Wolski',NULL,2,'2013-10-12','2013-10-17','rezerwacja'),(62,100021,'Janusz','Wolski',NULL,4,'2013-10-12','2013-10-17','rezerwacja'),(63,100021,'Janusz','Wolski',NULL,4,'2013-10-12','2013-10-17','rezerwacja');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

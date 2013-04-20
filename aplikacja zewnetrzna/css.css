@@ -1,5 +1,5 @@
 
-body {background-image:url(3558037.png); font-family:tahoma,arial; padding: 0px; color:#696969;line-height:16px; } 
+body {background-image:url(tlo.png); font-family:tahoma,arial; padding: 0px; color:#000000;line-height:16px; } 
 div {;-webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
@@ -12,16 +12,18 @@ margin: auto; top:0; width:1100px;  overflow:hidden; font-size:12px; }
 A {font-family:georgia; text-decoration:none; cursor:default; color:#556B2F; background:transparent;}
 A:hover {font-family:georgia;  text-decoration:none; cursor:default; color:#556B2F; border-bottom:1px #556B2F dotted; }
 h1 {color: #DEB887; text-shadow: 1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD;1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD; }
+h2 {color: #A0522D; text-shadow: 1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD;1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD; }
 #header {padding-top:20px; margin-top20px; width:1060px; height:100px; background-image:url(pensjonat.jpg); }
 #container1 {float:left; width:1080px; position:relative;}
-#content {position:relative;  background:#FAEBD7; margin-top:20px; clear:none; width:600px; overflow:hidden; font-size:12px;border:1px #DEB887 solid;}
+#content {position:relative; tex background:#FAEBD7; margin-top:20px; clear:none; width:600px; overflow:hidden; font-size:12px;border:1px #DEB887 solid; background-image:url(content.jpg)}
 #menu {float:left; border:1px #DEB887 solid; margin-top:20px; padding:20px; width:130px; height:auto; background:url(divleft.png)}
-#menu2 {float:right; border:1px #DEB887 solid; margin-top:20px; padding:20px; width:130px;height:auto;background:url(divleft.png)}
+#menu2 {float:right; border:1px #DEB887 solid; margin-top:20px; padding:20px; width:130px; color:#FFDEAD; height:auto;background:url(divleft.png)}
 #footer {position:relative; clear:both; text-align:center; top:20px;  width:900px; height:80px; }
-#form1 {padding-top:5px; width:220px; float:left;}
-#form2 {float:left; padding-top:4px; padding-right:10px; padding-left:30px;}
+#form1 {padding-top:5px; width:220px; float:left;overflow:hidden;}
+#form2 {float:left; padding-top:4px; padding-right:10px; padding-left:30px;overflow:hidden;}
 #form2r {float:left; padding-top:4px; padding-right:10px; padding-left:30px;}
-#form3 {float:right; padding-right:50px;}
+#form3 {float:right; padding-right:50px;overflow:hidden;}
 #form1r {padding-top:5px;  width:220px; float:right; padding-right:120px; }
 #menu a, #menu2 a, #menu a:visited, #menu a:active, #menu2 a:visited, #menu2 a:active {color:#FAEBD7; font-weight:bold;}
 #menu a:hover, #menu2 a:hover {color:#FFDEAD; font-weight:bold; border:none; text-shadow: 1px 1px 4px #DEB887, -1px -1px 4px #DEB887;1px 1px 4px #DEB887, -1px -1px 4px #DEB887; }
+input {background: #DEB887; border: 0px solid #DDD; border-radius: 5px; box-shadow: 0 0 5px #DDD inset; color: #666; padding: 5px 10px; width: 165px; outline: none;}
