@@ -1,6 +1,18 @@
+#container
+A {font-family:georgia; text-decoration:none; cursor:default; color:#556B2F; background:transparent;}
+A:hover {font-family:georgia;  text-decoration:none; cursor:default; color:#556B2F; border-bottom:1px #556B2F dotted; }
+h1 {color: #DEB887; text-shadow: 1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD;1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD; }
+h2 {color: #A0522D; text-shadow: 1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD;1px 1px 4px #FFDEAD, -1px -1px 4px #FFDEAD; }
+#header { border:1px #000000 solid; box-shadow: 10px 10px 5px #888888; }
+#header {padding-top:16px; margin-top20px; height:83px; background-image:url(logo.jpg); }
+#container1 {float:right; border:1px #DEB887 solid width:1080px; position:relative;}
+#menu a, #menu2 a, #menu a:visited, #menu a:active, #menu2 a:visited, #menu2 a:active {color:#088A4B; font-weight:bold;}
+#menu a:hover, #menu2 a:hover {color:#FFDEAD; font-weight:bold; border:none; text-shadow: 1px 1px 4px #DEB887, -1px -1px 4px #DEB887;1px 1px 4px #DEB887, -1px -1px 4px #DEB887; }
+#menu b, #menu2 b, #menu b:visited, #menu b:active, #menu2 b:visited, #menu2 b:active {color:#FFDEAD; font-weight:bold;}
+
 .DbTable {
 	margin:0px;padding:0px;
-	width:100%;
+	width:99,5%;
 	box-shadow: 10px 10px 5px #888888;
 	border:1px solid #000000;
 	
