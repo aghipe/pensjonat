@@ -28,9 +28,9 @@ function confirmDelete()
 </div>
 <BR>
 <div id="menu" align="center">
-<a href="Clients.php">Klienci</a> |
-<b href="Reservations.php?action=browse">Wynajęcia</b> |
-<a href="Rooms.php">Pokoje</a><BR>
+<a href="clients.php?action=browse">Klienci</a> |
+<b href="reservations.php?action=browse">Wynajęcia</b> |
+<a href="rooms.php?action=browse">Pokoje</a><BR>
 </div>
 </div>
 <div id="table">
@@ -41,7 +41,6 @@ class pension
 	private $clients = array();
 	private $rooms = array();
 	private $db_connection;
-	
 	static function main()
 	{
 		$pension = new pension;
@@ -64,7 +63,21 @@ class pension
 	{
 		$allreservations = array();
 		$row = array();
-		$sql = "SELECT * FROM wynajecia";
+		if ($_GET && isset($_GET['filter']))
+		{
+			if ($_GET['filter'] == "clientsid")
+			{
+				$sql = "SELECT * FROM wynajecia where nr_klienta='".$_GET['value']."'";
+			}
+			else if ($_GET['filter'] == "roomsno")
+			{
+				$sql = "SELECT * FROM wynajecia where nr_pokoju='".$_GET['value']."'";
+			}
+		}
+		else 
+		{
+			$sql = "SELECT * FROM wynajecia";
+		}
 		$getallreservations = mysql_query($sql) or die 
 			("Could not execute query : $query." . mysql_error());
 		$index = 0;
@@ -84,6 +97,46 @@ class pension
     		$index = $index + 1;
 		}
 		return $allreservations;
+	}
+	
+	function get_all_clients()
+	{
+		$allclients = array();
+		$sql = "SELECT * FROM klienci";
+		$getallclients = mysql_query($sql) or die 
+			("Could not execute query : $query." . mysql_error());
+		$index = 0;
+		while($row = mysql_fetch_assoc($getallclients))
+		{
+			$newclient = new client;
+			$newclient->set_fname($row["imie"]);
+			$newclient->set_lname($row["nazwisko"]);
+			$newclient->set_clientsid($row["nr_klienta"]);
+			$newclient->set_address($row["adres"]);
+			$newclient->set_telephone($row["telefon"]);
+			$newclient->set_email($row["e_mail"]);
+    		$allclients[$index] = $newclient;
+    		$index = $index + 1;
+		}
+		return $allclients;
+	}
+	
+	function get_all_rooms()
+	{
+		$allrooms = array();
+		$sql = "SELECT * FROM pokoje";
+		$getallrooms = mysql_query($sql) or die 
+			("Could not execute query : $query." . mysql_error());
+		$index = 0;
+		while($row = mysql_fetch_assoc($getallrooms))
+		{
+			$newroom = new room;
+			$newroom->set_roomno($row["nr_pokoju"]);
+			$newroom->set_capacity($row["pojemnosc"]);
+    		$allrooms[$index] = $newroom;
+    		$index = $index + 1;
+		}
+		return $allrooms;
 	}
 	
 	function execute_query($clients, $reservations)
@@ -180,53 +233,23 @@ class pension
 		echo "</table>";
 		echo "<table>";
 		echo "<tr>";
-        echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=browse'>
-						<input type ='submit' value='   Odśwież   ' /></form>";
-		echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=0'>
-						<input type ='submit' value='   Dodaj nowe wynajęcie   ' /></form></td>";
+		if ($_GET && isset($_GET['filter']))
+		{
+			echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=browse&filter=".$_GET['filter'].
+				"&value=".$_GET['value']."'><input type ='submit' value='   Odśwież   ' /></form>";
+			echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=0&filter=".$_GET['filter'].
+				"&value=".$_GET['value']."'><input type ='submit' value='   Dodaj nowe wynajęcie   ' /></form></td>";
+		}
+		else
+		{
+        	echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=browse'>
+				<input type ='submit' value='   Odśwież   ' /></form>";
+			echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=0'>
+				<input type ='submit' value='   Dodaj nowe wynajęcie   ' /></form></td>";
+		}
     	echo "</tr>";
 		echo "</table>";
 		echo "</div>";
-	}
-	
-	function get_all_clients()
-	{
-		$allclients = array();
-		$sql = "SELECT * FROM klienci";
-		$getallclients = mysql_query($sql) or die 
-			("Could not execute query : $query." . mysql_error());
-		$index = 0;
-		while($row = mysql_fetch_assoc($getallclients))
-		{
-			$newclient = new client;
-			$newclient->set_fname($row["imie"]);
-			$newclient->set_lname($row["nazwisko"]);
-			$newclient->set_clientsid($row["nr_klienta"]);
-			$newclient->set_address($row["adres"]);
-			$newclient->set_telephone($row["telefon"]);
-			$newclient->set_email($row["e_mail"]);
-    		$allclients[$index] = $newclient;
-    		$index = $index + 1;
-		}
-		return $allclients;
-	}
-	
-	function get_all_rooms()
-	{
-		$allrooms = array();
-		$sql = "SELECT * FROM pokoje";
-		$getallrooms = mysql_query($sql) or die 
-			("Could not execute query : $query." . mysql_error());
-		$index = 0;
-		while($row = mysql_fetch_assoc($getallrooms))
-		{
-			$newroom = new room;
-			$newroom->set_roomno($row["nr_pokoju"]);
-			$newroom->set_capacity($row["pojemnosc"]);
-    		$allrooms[$index] = $newroom;
-    		$index = $index + 1;
-		}
-		return $allrooms;
 	}
 }
 
@@ -339,7 +362,15 @@ class reservation
 		{
 			if ($this->get_reservationid() == "0")
 			{
-				echo "<form name = 'edit' action='reservations.php?action=add' method='post'>";
+				if ($_GET && isset($_GET['filter']))
+				{
+					echo "<form name = 'edit' action='reservations.php?
+						action=add&filter=".$_GET['filter']."&value=".$_GET['value']."' method='post'>";
+				}
+				else 
+				{
+					echo "<form name = 'edit' action='reservations.php?action=add' method='post'>";
+				}
 				echo "<td></td>";
 				echo "<td><input size=10 type='text' name='clientsid' value='".$this->get_clientsid()."'></td>";
 				echo "<td></td>";
@@ -353,7 +384,15 @@ class reservation
 			}
 			else
 			{
-				echo "<form name = 'edit' action='reservations.php?action=update&id=".$this->get_reservationid()."' method='post'>";
+				if ($_GET && isset($_GET['filter']))
+				{
+					echo "<form name = 'edit' action='reservations.php?
+						action=update&id=".$this->get_reservationid()."&filter=".$_GET['filter']."&value=".$_GET['value']."' method='post'>";
+				}
+				else
+				{
+					echo "<form name = 'edit' action='reservations.php?action=update&id=".$this->get_reservationid()."' method='post'>";
+				}
 				echo "<td>" . $this->get_reservationid() . "</td>";
 				echo "<td><input size=10 type='text' name='clientsid' value='".$this->get_clientsid()."'></td>";
 				echo "<td>" . $this->get_clientsfname() . "</td>";
@@ -366,8 +405,16 @@ class reservation
 				echo "<td><input type='submit' name='save' value='   Zapisz   '</td>";
 			}
 			echo "</form>";
-			echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=browse'>
-						<input type ='submit' value='   Anuluj   ' /></form></td>";
+			if ($_GET && isset($_GET['filter']))
+			{
+				echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=browse
+					&filter=".$_GET['filter']."&value=".$_GET['value']."'><input type ='submit' value='   Anuluj   ' /></form></td>";
+			}
+			else
+			{
+				echo "<form style='display: inline' method = 'post' action = 'reservations.php?action=browse'>
+					<input type ='submit' value='   Anuluj   ' /></form></td>";
+			}
 		}
 		else 
 		{
@@ -380,10 +427,21 @@ class reservation
 			echo "<td>" . $this->get_arrivaldate() . "</td>";
 			echo "<td>" . $this->get_departuredate() . "</td>";
 			echo "<td>" . $this->get_status() . "</td>";
-			echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=".$this->get_reservationid()."'>
-				<input type ='submit' value='Edytuj wynajęcie' /></form>
-					<form style='display: inline' method = 'post' action = 'reservations.php?action=delete&id=".$this->get_reservationid()."'>
-						<input type ='submit' value='Usuń wynajęcie' onClick='return confirmDelete()' /></form></td>";
+			if ($_GET && isset($_GET['filter']))
+			{
+				echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=".$this->get_reservationid().
+					"&filter=".$_GET['filter']."&value=".$_GET['value']."'><input type ='submit' value='Edytuj wynajęcie' /></form>
+						<form style='display: inline' method = 'post' action = 'reservations.php?
+							action=delete&id=".$this->get_reservationid()."&filter=".$_GET['filter']."&value=".$_GET['value']."'>
+								<input type ='submit' value='Usuń wynajęcie' onClick='return confirmDelete()' /></form></td>";
+			}
+			else 
+			{
+				echo "<td><form style='display: inline' method = 'post' action = 'reservations.php?action=edit&id=".$this->get_reservationid()."'>
+					<input type ='submit' value='Edytuj wynajęcie' /></form>
+						<form style='display: inline' method = 'post' action = 'reservations.php?action=delete&id=".$this->get_reservationid()."'>
+							<input type ='submit' value='Usuń wynajęcie' onClick='return confirmDelete()' /></form></td>";
+			}
 		}
 		echo "</tr>";
 	}
