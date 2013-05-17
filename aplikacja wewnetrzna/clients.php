@@ -20,6 +20,10 @@ function denyDeletion()
 {
 	alert("Przed usunięciem klienta należy usunąć wszystkie przypisane do niego wynajęcia!");
 }
+function scrollToElement(elementsId) 
+{
+	location.hash = '#' + elementsId;
+}
 // -->
 </script>
 </head>
@@ -32,9 +36,9 @@ function denyDeletion()
 </div>
 <BR>
 <div id="menu" align="center">
-<b href="clients.php">Klienci</b> |
-<a href="reservations.php">Wynajęcia</a> |
-<a href="rooms.php">Pokoje</a><BR>
+<b href="clients.php?action=browse">Klienci</b> |
+<a href="reservations.php?action=browse">Wynajęcia</a> |
+<a href="rooms.php?action=browse">Pokoje</a><BR>
 </div>
 </div>
 <div id="table">
@@ -60,6 +64,7 @@ class pension
 		$pension->execute_query($clients, $reservations);
 		$clients = $pension->get_all_clients();
 		$pension->display_clients($clients);
+		$pension->scroll_to_edit_form();
 		
 		$db_connection->close_connection();
 	}
@@ -221,6 +226,14 @@ class pension
     	echo "</tr>";
 		echo "</table>";
 		echo "</div>";
+	}
+	
+	function scroll_to_edit_form()
+	{
+		if (isset($_GET['action']) && $_GET['action'] == "edit")
+		{
+			echo '<script type="text/javascript">scrollToElement("editform")</script>';
+		}
 	}
 }
 
@@ -435,7 +448,7 @@ class client
 				echo "<td><input type='text' name='address'></td>";
 				echo "<td><input type='text' name='telephone'></td>";
 				echo "<td><input type='text' name='email'></td>";
-				echo "<td><input type='submit' name='save' value='   Dodaj   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Dodaj   '</td>";
 			}
 			else
 			{
@@ -446,7 +459,7 @@ class client
 				echo "<td><input type='text' name='address' value='".$this->get_address()."'></td>";
 				echo "<td><input type='text' name='telephone' value='".$this->get_telephone()."'></td>";
 				echo "<td><input type='text' name='email' value='".$this->get_email()."'></td>";
-				echo "<td><input type='submit' name='save' value='   Zapisz   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Zapisz   '</td>";
 			}
 			echo "</form>";
 			echo "<form style='display: inline' method = 'post' action = 'clients.php?action=browse'>

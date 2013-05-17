@@ -24,6 +24,10 @@ function denyUpdate()
 {
 	alert("Nie udało się zmodyfikować pokoju, ponieważ pokój o takim numerze już istnieje w bazie danych lub wybrano zabroniony numer 0.");
 }
+function scrollToElement(elementsId) 
+{
+	location.hash = '#' + elementsId;
+}
 // -->
 </script>
 </head>
@@ -36,9 +40,9 @@ function denyUpdate()
 </div>
 <BR>
 <div id="menu" align="center">
-<a href="clients.php">Klienci</a> |
-<a href="reservations.php">Wynajęcia</a> |
-<b href="rooms.php">Pokoje</b><BR>
+<a href="clients.php?action=browse">Klienci</a> |
+<a href="reservations.php?action=browse">Wynajęcia</a> |
+<b href="rooms.php?action=browse">Pokoje</b><BR>
 </div>
 </div>
 <div id="table">
@@ -64,6 +68,7 @@ class pension
 		$pension->execute_query($rooms, $reservations);
 		$rooms = $pension->get_all_rooms();
 		$pension->display_rooms($rooms);
+		$pension->scroll_to_edit_form();
 		
 		$db_connection->close_connection();
 	}
@@ -237,6 +242,14 @@ class pension
     	echo "</tr>";
 		echo "</table>";
 		echo "</div>";
+	}
+	
+	function scroll_to_edit_form()
+	{
+		if (isset($_GET['action']) && $_GET['action'] == "edit")
+		{
+			echo '<script type="text/javascript">scrollToElement("editform")</script>';
+		}
 	}
 }
 
@@ -473,14 +486,14 @@ class room
 				echo "<form name = 'edit' action='rooms.php?action=add' method='post'>";
 				echo "<td><input type='text' name='roomsno'></td>";
 				echo "<td><input type='text' name='capacity'></td>";
-				echo "<td><input type='submit' name='save' value='   Dodaj   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Dodaj   '</td>";
 			}
 			else
 			{
 				echo "<form name = 'edit' action='rooms.php?action=update&id=".$this->get_roomno()."' method='post'>";
 				echo "<td><input type='text' name='roomsno' value='".$this->get_roomno()."'></td>";
 				echo "<td><input type='text' name='capacity' value='".$this->get_capacity()."'></td>";
-				echo "<td><input type='submit' name='save' value='   Zapisz   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Zapisz   '</td>";
 			}
 			echo "</form>";
 			echo "<form style='display: inline' method = 'post' action = 'rooms.php?action=browse'>

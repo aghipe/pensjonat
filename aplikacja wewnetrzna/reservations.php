@@ -16,6 +16,10 @@ function confirmDelete()
 	else
 	return false ;
 }
+function scrollToElement(elementsId) 
+{
+	location.hash = '#' + elementsId;
+}
 // -->
 </script>
 </head>
@@ -41,6 +45,7 @@ class pension
 	private $clients = array();
 	private $rooms = array();
 	private $db_connection;
+	
 	static function main()
 	{
 		$pension = new pension;
@@ -55,6 +60,7 @@ class pension
 		$pension->execute_query($clients, $reservations);
 		$reservations = $pension->get_all_reservations();
 		$pension->display_reservations($reservations);
+		$pension->scroll_to_edit_form();
 		
 		$db_connection->close_connection();
 	}
@@ -251,6 +257,14 @@ class pension
 		echo "</table>";
 		echo "</div>";
 	}
+
+	function scroll_to_edit_form()
+	{
+		if (isset($_GET['action']) && $_GET['action'] == "edit")
+		{
+			echo '<script type="text/javascript">scrollToElement("editform")</script>';
+		}
+	}
 }
 
 class reservation
@@ -380,7 +394,7 @@ class reservation
 				echo "<td><input size=10 type='text' name='arrivaldate'></td>";
 				echo "<td><input size=10 type='text' name='departuredate'></td>";
 				echo "<td><input type='text' name='status'></td>";
-				echo "<td><input type='submit' name='save' value='   Dodaj   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Dodaj   '</td>";
 			}
 			else
 			{
@@ -402,7 +416,7 @@ class reservation
 				echo "<td><input size=10 type='text' name='arrivaldate' value='".$this->get_arrivaldate()."'></td>";
 				echo "<td><input size=10 type='text' name='departuredate' value='".$this->get_departuredate()."'></td>";
 				echo "<td><input type='text' name='status' value='".$this->get_status()."'></td>";
-				echo "<td><input type='submit' name='save' value='   Zapisz   '</td>";
+				echo "<td><input id='editform' type='submit' name='save' value='   Zapisz   '</td>";
 			}
 			echo "</form>";
 			if ($_GET && isset($_GET['filter']))
